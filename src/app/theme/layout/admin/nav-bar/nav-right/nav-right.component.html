@@ -1,0 +1,33 @@
+<div class="ms-auto">
+  <ul class="list-unstyled">
+
+    <li>
+      <div class="dropdown pc-h-item header-user-profile" ngbDropdown>
+        <a
+          class="pc-head-link head-link-primary dropdown-toggle arrow-none me-0"
+          data-bs-toggle="dropdown"
+          href="javascript:"
+          ngbDropdownToggle
+        >
+          <span>
+            <i class="ti ti-settings"></i>
+          </span>
+        </a>
+        <div class="dropdown-menu dropdown-user-profile dropdown-menu-end pc-h-dropdown" ngbDropdownMenu>
+          <div class="dropdown-header">
+
+            <hr />
+            <ng-scrollbar style="height: calc(100vh - 280px)" visibility="hover">
+
+              <hr />
+              <a (click)="cerrarSesion()" class="dropdown-item">
+                <i class="ti ti-logout"></i>
+                <span>cerrar sesión</span>
+              </a>
+            </ng-scrollbar>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

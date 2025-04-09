@@ -1,0 +1,48 @@
+<form [formGroup]="formGroup">
+    <div *ngFor="let field of fields" class="form-floating mb-3">
+      <!-- Input -->
+      <ng-container *ngIf="field.type === 'input'">
+        <input
+          [id]="field.name"
+          [type]="field.inputType || 'text'"
+          class="form-control"
+          [formControlName]="field.name"
+          [placeholder]="field.placeholder || field.label"
+        />
+        <label [for]="field.name">{{ field.label }}</label>
+      </ng-container>
+  
+      <!-- Select -->
+      <ng-container *ngIf="field.type === 'select'">
+        <select
+          [id]="field.name"
+          class="form-control"
+          [formControlName]="field.name"
+        >
+          <option value="" disabled>{{ field.placeholder || 'Seleccione una opción' }}</option>
+          <option *ngFor="let option of field.options" [value]="option.value">
+            {{ option.label }}
+          </option>
+        </select>
+        <label [for]="field.name">{{ field.label }}</label>
+      </ng-container>
+  
+      <!-- File -->
+      <ng-container *ngIf="field.type === 'file'">
+        <input
+          [id]="field.name"
+          type="file"
+          class="form-control"
+          [accept]="field.accept"
+          (change)="field.onChange($event)"
+        />
+        <label [for]="field.name">{{ field.label }}</label>
+      </ng-container>
+  
+      <!-- Mostrar errores -->
+      <small class="text-danger" *ngIf="formGroup.get(field.name)?.touched && formGroup.get(field.name)?.errors">
+        <app-form-error [control]="formGroup.get(field.name)"></app-form-error>
+        <!-- <ng-container *ngIf="formGroup.get(field.name)?.hasError('min')">El valor debe ser mayor o igual a {{ formGroup.get(field.name)?.errors?.min.min }}.</ng-container> -->
+      </small>
+    </div>
+  </form>

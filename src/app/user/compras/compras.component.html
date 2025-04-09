@@ -1,0 +1,82 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="Mis Compras">
+      <div class="row mb-3">
+        <!-- Filtro de búsqueda -->
+        <div class="col-sm-6 text-start">
+          <mat-form-field class="w-100">
+            <mat-label>Buscar compra</mat-label>
+            <input matInput (keyup)="applyFilter($event)" placeholder="Buscar compra" #input />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Lista de compras en formato de tarjetas -->
+      <div class="row">
+        <div class="col-md-6 mb-4" *ngFor="let compra of dataSource.data">
+          <div class="card h-100 wide-card">
+            <div class="card-body">
+              <h5 class="card-title">Compra #{{ compra.cveVenta }}</h5>
+              <p class="card-text">
+                <strong>Total:</strong> {{ compra.totalVenta | currency }}<br />
+                <strong>Fecha:</strong> {{ compra.fechaVenta | date: 'short' }}<br />
+                <strong>Estado:</strong> {{ compra.estado }}
+              </p>
+              <button
+                mat-raised-button
+                color="primary"
+                (click)="toggle(compra)"
+                class="w-100"
+              >
+                {{ expandedElement === compra ? 'Ocultar Detalles' : 'Ver Detalles' }}
+              </button>
+            </div>
+            <div
+              class="card-footer"
+              *ngIf="expandedElement === compra"
+            >
+              <h6>Detalles de la Compra</h6>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th>Producto</th>
+                    <th>Descripción</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let detalle of compra.DetalleVenta">
+                    <td>{{ detalle.producto.nombre }}</td>
+                    <td>{{ detalle.producto.descripcion }}</td>
+                    <td>{{ detalle.cantidad }}</td>
+                    <td>{{ detalle.precioProducto | currency }}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3" class="text-end"><strong>Subtotal:</strong></td>
+                    <td>{{ calcularSubtotal(compra.DetalleVenta) | currency }}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3" class="text-end"><strong>Método de Pago:</strong></td>
+                    <td>{{ compra.metodoPago }}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3" class="text-end"><strong>Dirección:</strong></td>
+                    <td>{{ compra.usuario.direccion }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Paginador -->
+      <div class="row mt-3">
+        <div class="col-sm-12">
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+        </div>
+      </div>
+    </app-card>
+  </div>
+</div>

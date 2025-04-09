@@ -1,0 +1,68 @@
+
+  
+  .btn-success {
+    background-color: #28a745 !important; /* Verde */
+    color: #fff !important;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545 !important; /* Rojo */
+    color: #fff !important;
+  }
+
+  .snackbar-success {
+    background-color: #28a745 !important; /* Verde */
+    color: #fff !important; /* Texto blanco */
+  }
+  
+  .snackbar-error {
+    background-color: #dc3545 !important; /* Rojo */
+    color: #fff !important; /* Texto blanco */
+  }
+
+  .alert-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1050; /* Asegura que esté encima de otros elementos */
+    width: auto;
+  }
+  
+  .alert {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .alert-success {
+    background-color: #28a745;
+    color: #fff;
+  }
+  
+  .alert-danger {
+    background-color: #dc3545;
+    color: #fff;
+  }
+  
+  .btn-close {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+
+  .card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-footer button {
+    margin-right: 5px;
+  }

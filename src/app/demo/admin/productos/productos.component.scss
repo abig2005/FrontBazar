@@ -1,0 +1,24 @@
+.image-container {
+    height: 200px; /* Altura fija para todas las imágenes */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5eeee; /* Fondo claro para las imágenes */
+    overflow: hidden;
+  }
+  
+  .image-container img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain; /* Ajusta la imagen dentro del contenedor */
+  }
+  
+  .no-image {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d; /* Color de texto gris */
+    font-size: 1.2rem;
+    font-weight: bold;
+  }

@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-sm-12">
+    <app-card cardTitle="Productos">
+      <div class="container mt-5">
+        <h2 class="text-center mb-4">Productos de la Categoría: {{ categoriaNombre }}</h2>
+        <div class="row">
+          <div class="col-md-4 mb-4" *ngFor="let producto of productosPaginados">
+            <div class="card h-100">
+              <img [src]="mostrarImagen(producto.imagen) || 'assets/images/default-product.png'" class="card-img-top product-image" alt="Imagen del producto">
+              <div class="card-body">
+                <h5 class="card-title">{{ producto.nombre }}</h5>
+                <p class="card-text">{{ producto.descripcion }}</p>
+                <p class="card-text"><strong>Precio:</strong> {{ producto.precio | currency }}</p>
+                <button class="btn btn-danger" (click)="agregarAlCarrito(producto)">Agregar al Carrito</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Paginador -->
+        <mat-paginator
+        [length]="length"
+        [pageSize]="6"
+        [pageSizeOptions]="[6, 12, 18]"
+        (page)="cambiarPagina($event)">
+      </mat-paginator>
+      </div>
+    </app-card>
+  </div>
+</div>

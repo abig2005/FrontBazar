@@ -1,0 +1,59 @@
+.checkout-button {
+    background-color: #008cba !important; /* Azul */
+    color: white !important;
+  }
+
+
+  .paypal-container {
+    // display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    width: 100%; /* Asegura que ocupe todo el ancho disponible */
+    max-width: 600px; /* Define un ancho máximo */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    padding: 20px; /* Agrega espacio alrededor */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+  }
+
+  .card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-img-top {
+    max-height: 150px;
+    object-fit: contain;
+    background-color: #f8f9fa;
+  }
+  
+  .card-footer button {
+    margin-left: 5px;
+  }
+  
+  .paypal-container {
+    text-align: center;
+  }
+
+  .small-card {
+    height: 250px; /* Reduce la altura de la tarjeta */
+    font-size: 0.9rem; /* Reduce el tamaño de la fuente */
+  }
+  
+  .small-card .card-img-top {
+    max-height: 100px; /* Reduce la altura de la imagen */
+    object-fit: contain; /* Ajusta la imagen dentro del contenedor */
+  }
+  
+  .small-card .card-body {
+    padding: 10px; /* Reduce el espacio interno */
+  }
+  
+  .small-card .card-footer {
+    padding: 5px; /* Reduce el espacio en el pie de la tarjeta */
+  }
+  
+  .small-card input.form-control {
+    height: 30px; /* Reduce la altura del campo de entrada */
+    font-size: 0.8rem; /* Reduce el tamaño de la fuente del campo */
+  }

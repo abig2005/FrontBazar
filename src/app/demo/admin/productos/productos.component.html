@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row mb-4">
+    <!-- Filtro de búsqueda -->
+    <!-- <div class="col-md-6">
+      <mat-form-field class="w-100">
+        <mat-label>Buscar producto</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Escribe para buscar" #input>
+      </mat-form-field>
+    </div> -->
+
+    <!-- Selección de categoría -->
+    <div class="col-md-6">
+      <mat-form-field class="w-100">
+        <mat-label>Categoría</mat-label>
+        <mat-select [(value)]="categoriaSeleccionada" (selectionChange)="filtrarPorCategoria($event.value)">
+          <mat-option [value]="null">Todas las categorías</mat-option>
+          <mat-option *ngFor="let categoria of categorias" [value]="categoria.cveCategoria">
+            {{ categoria.descripcion }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- Botón para agregar producto -->
+  <div class="row mb-4">
+    <div class="col text-end">
+      <button class="btn btn-primary" (click)="openProductModal()">Agregar Producto</button>
+    </div>
+  </div>
+
+  <!-- Lista de productos en formato de tarjetas -->
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let producto of paginatedData">
+      <div class="card h-100">
+        <div class="image-container">
+          <img
+            *ngIf="producto.imagen; else noImage"
+            [src]="producto.imagen"
+            class="card-img-top"
+            alt="Imagen del Producto"
+            (click)="verImagen(producto.imagen, imagenModal)"
+            style="cursor: pointer;"
+          />
+          <ng-template #noImage>
+            <div class="no-image">
+              <span>Sin Imagen</span>
+            </div>
+          </ng-template>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">{{ producto.nombre }}</h3>
+          <p class="card-text">
+            <strong>Descripción:</strong> {{ producto.descripcion }}<br>
+            <strong>Precio:</strong> ${{ producto.precio }}<br>
+            <strong>Cantidad:</strong> {{ producto.cantidad }}<br>
+            <strong>Categoría:</strong> {{ producto.categoria.descripcion }}
+          </p>
+        </div>
+        <div class="card-footer text-end">
+          <button class="btn btn-sm btn-primary me-2" (click)="openProductModal(producto)">Editar</button>
+          <button class="btn btn-sm btn-danger" (click)="eliminarProducto(producto.cveProducto)">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Paginador -->
+    <mat-paginator
+    [length]="length"
+    [pageSize]="6"
+    [pageSizeOptions]="[6, 12, 18]"
+    (page)="cambiarPagina($event)">
+  </mat-paginator>
+<ng-template #imagenModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Vista del producto</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body text-center">
+    <img [src]="imagenSeleccionada" alt="Imagen del Producto" class="img-fluid" />
+  </div>
+</ng-template>

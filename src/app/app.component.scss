@@ -1,0 +1,23 @@
+.bg-success {
+    background-color: #28a745 !important;
+    color: #fff !important;
+  }
+  
+  .bg-danger {
+    background-color: #dc3545 !important;
+    color: #fff !important;
+  } 
+
+  .table-responsive {
+    overflow-x: auto; /* Habilita el desplazamiento horizontal */
+    -webkit-overflow-scrolling: touch; /* Mejora la experiencia de desplazamiento en dispositivos táctiles */
+  }
+  
+  table {
+    width: 100%; /* Asegura que la tabla ocupe todo el ancho disponible */
+    border-collapse: collapse; /* Opcional: mejora la apariencia de las tablas */
+  }
+
+  .logo{
+    max-width: 65px !important;
+  }
